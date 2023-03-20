@@ -46,6 +46,7 @@ def createTodaysGames(games, df):
 
 
 def main():
+    output_text = ""
     data = get_todays_games_json(todays_games_url)
     games = create_todays_games(data)
     data = get_json_data(data_url)
@@ -68,7 +69,12 @@ def main():
         print("------------Neural Network Model Predictions-----------")
         NN_Runner.nn_runner(data, todays_games_uo, frame_ml, games, home_team_odds, away_team_odds)
         print("-------------------------------------------------------")
-
+    if odds is not None:
+        output_text += f"------------------{args.odds} odds data------------------\n"
+        for g in odds.keys():
+            home_team, away_team = g.split(":")
+            output_text += f"{away_team} ({odds[g][away_team]['money_line_odds']}) @ {home_team} ({odds[g][home_team]['money_line_odds']})\n"
+    return output_text
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Model to Run')
@@ -76,4 +82,5 @@ if __name__ == "__main__":
     parser.add_argument('-nn', action='store_true', help='Run with Neural Network Model')
     parser.add_argument('-A', action='store_true', help='Run all Models')
     args = parser.parse_args()
-    main()
+    output_text = main() 
+    
