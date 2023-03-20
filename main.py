@@ -35,6 +35,8 @@ def createTodaysGames(games, df):
         stats = home_team_series.append(away_team_series)
         match_data.append(stats)
 
+    print("Match data:", match_data)  # Debug print
+
     games_data_frame = pd.concat(match_data, ignore_index=True, axis=1)
     games_data_frame = games_data_frame.T
 
