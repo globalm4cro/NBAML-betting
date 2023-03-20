@@ -81,6 +81,7 @@ if __name__ == "__main__":
     parser.add_argument('-xgb', action='store_true', help='Run with XGBoost Model')
     parser.add_argument('-nn', action='store_true', help='Run with Neural Network Model')
     parser.add_argument('-A', action='store_true', help='Run all Models')
+    parser.add_argument('-odds', help='Sportsbook to fetch from. (fanduel, draftkings, betmgm, pointsbet, caesars, wynn, bet_rivers_ny')       
     args = parser.parse_args()
     output_text = main() 
     
