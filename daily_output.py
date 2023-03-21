@@ -7,7 +7,12 @@ def remove_colorama_codes(text):
     return ansi_escape.sub('', text)
 
 # Run the command and store the output
-output_txt = !python3 main.py -A -odds=betmgm
+#output_txt = !python3 main.py -A -odds=betmgm
+import subprocess
+
+output_txt = subprocess.run(["python3", "main.py", "-A", "-odds=betmgm"], capture_output=True, text=True)
+
+
 
 # Convert SList to a string
 output_txt_str = text_utils.SList(output_txt).nlstr
