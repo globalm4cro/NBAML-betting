@@ -94,11 +94,11 @@ def main():
     if args.A:
         print("---------------XGBoost Model Predictions---------------")
         XGBoost_Runner.xgb_runner(data, todays_games_uo, frame_ml, games, home_team_odds, away_team_odds)
-        print("-------------------------------------------------------")
+        print("xgbend-------------------------------------------------")
         data = tf.keras.utils.normalize(data, axis=1)
         print("------------Neural Network Model Predictions-----------")
         NN_Runner.nn_runner(data, todays_games_uo, frame_ml, games, home_team_odds, away_team_odds)
-        print("-------------------------------------------------------")
+        print("nnnend-------------------------------------------------")
 
 
 if __name__ == "__main__":
