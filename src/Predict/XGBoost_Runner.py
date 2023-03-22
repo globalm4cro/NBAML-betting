@@ -73,26 +73,7 @@ def xgb_runner(data, todays_games_uo, frame_ml, games, home_team_odds, away_team
     
     #NEW CODE ADDS Pandas Dataframe for XGB to call and sort later -JS
     xgb_ev_list =[]
-    
-    """count = 0
-    for game in games:
-        home_team = game[0]
-        away_team = game[1]
-        ev_home = ev_away = 0
-        if home_team_odds[count] and away_team_odds[count]:
-            ev_home = float(Expected_Value.expected_value(ml_predictions_array[count][0][1], int(home_team_odds[count])))
-            ev_away = float(Expected_Value.expected_value(ml_predictions_array[count][0][0], int(away_team_odds[count])))
-        if ev_home > 0:
-            print(home_team + ' EV: ' + Fore.GREEN + str(ev_home) + Style.RESET_ALL)
-        else:
-            print(home_team + ' EV: ' + Fore.RED + str(ev_home) + Style.RESET_ALL)
-
-        if ev_away > 0:
-            print(away_team + ' EV: ' + Fore.GREEN + str(ev_away) + Style.RESET_ALL)
-        else:
-            print(away_team + ' EV: ' + Fore.RED + str(ev_away) + Style.RESET_ALL)
-        count += 1"""
-    count = 0
+        count = 0
     for game in games:
         home_team = game[0]
         away_team = game[1]
@@ -126,6 +107,28 @@ def xgb_runner(data, todays_games_uo, frame_ml, games, home_team_odds, away_team
 
            
 deinit()
+
+    """count = 0
+    for game in games:
+        home_team = game[0]
+        away_team = game[1]
+        ev_home = ev_away = 0
+        if home_team_odds[count] and away_team_odds[count]:
+            ev_home = float(Expected_Value.expected_value(ml_predictions_array[count][0][1], int(home_team_odds[count])))
+            ev_away = float(Expected_Value.expected_value(ml_predictions_array[count][0][0], int(away_team_odds[count])))
+        if ev_home > 0:
+            print(home_team + ' EV: ' + Fore.GREEN + str(ev_home) + Style.RESET_ALL)
+        else:
+            print(home_team + ' EV: ' + Fore.RED + str(ev_home) + Style.RESET_ALL)
+
+        if ev_away > 0:
+            print(away_team + ' EV: ' + Fore.GREEN + str(ev_away) + Style.RESET_ALL)
+        else:
+            print(away_team + ' EV: ' + Fore.RED + str(ev_away) + Style.RESET_ALL)
+        count += 1"""
+    
+    
+
     
     
 
