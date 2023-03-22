@@ -117,13 +117,15 @@ def xgb_runner(data, todays_games_uo, frame_ml, games, home_team_odds, away_team
             xgb_ev_dict[away_team] = ev_away
             xgb_ev_list.append({'Team': away_team, 'XGB_EV': ev_away})
             print(away_team + ' XGB_EV: ' + Fore.RED + str(ev_away) + Style.RESET_ALL)
+        
+        xgb_ev_df = pd.DataFrame(xgb_ev_list)
+        xgb_ev_df = xgb_ev_df.sort_values(by='XGB_EV', ascending=False).reset_index(drop=True)
+        return xgb_ev_df
+        
         count += 1
 
            
 deinit()
     
     
-xgb_ev_df = pd.DataFrame(xgb_ev_list)
-xgb_ev_df = xgb_ev_df.sort_values(by='XGB_EV', ascending=False).reset_index(drop=True)
 
-return xgb_ev_df
