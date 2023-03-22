@@ -17,6 +17,7 @@ xgb_uo.load_model('Models/XGBoost_Models/XGBoost_52.5%_UO-6.json')
 
 
 def xgb_runner(data, todays_games_uo, frame_ml, games, home_team_odds, away_team_odds):
+    xgb_ev_dict = {} #NEW CODE
     ml_predictions_array = []
 
     for row in data:
