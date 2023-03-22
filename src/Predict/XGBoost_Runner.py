@@ -69,8 +69,12 @@ def xgb_runner(data, todays_games_uo, frame_ml, games, home_team_odds, away_team
                     Fore.BLUE + 'OVER ' + Style.RESET_ALL + str(
                         todays_games_uo[count]) + Style.RESET_ALL + Fore.CYAN + f" ({un_confidence}%)" + Style.RESET_ALL)
         count += 1
-    print("--------------------Expected Value---------------------")
-    count = 0
+    print("----------------XGB Expected Value---------------------")
+    
+    #NEW CODE ADDS Pandas Dataframe for XGB to call and sort later -JS
+    xgb_ev_list =[]
+    
+    """count = 0
     for game in games:
         home_team = game[0]
         away_team = game[1]
@@ -87,6 +91,39 @@ def xgb_runner(data, todays_games_uo, frame_ml, games, home_team_odds, away_team
             print(away_team + ' EV: ' + Fore.GREEN + str(ev_away) + Style.RESET_ALL)
         else:
             print(away_team + ' EV: ' + Fore.RED + str(ev_away) + Style.RESET_ALL)
+        count += 1"""
+    count = 0
+    for game in games:
+        home_team = game[0]
+        away_team = game[1]
+        ev_home = ev_away = 0
+        if home_team_odds[count] and away_team_odds[count]:
+            ev_home = float(Expected_Value.expected_value(ml_predictions_array[count][0][1], int(home_team_odds[count])))
+            ev_away = float(Expected_Value.expected_value(ml_predictions_array[count][0][0], int(away_team_odds[count])))
+        if ev_home > 0:
+            xgb_ev_dict[home_team] = ev_home
+            xgb_ev_list.append({'Team': home_team, 'XGB_EV': ev_home})
+            print(home_team + ' XGB_EV: ' + Fore.GREEN + str(ev_home) + Style.RESET_ALL)
+        else:
+            xgb_ev_dict[home_team] = ev_home
+            xgb_ev_list.append({'Team': home_team, 'XGB_EV': ev_home})
+            print(home_team + ' XGB_EV: ' + Fore.RED + str(ev_home) + Style.RESET_ALL)
+
+        if ev_away > 0:
+            xgb_ev_dict[away_team] = ev_away
+            xgb_ev_list.append({'Team': away_team, 'XGB_EV': ev_away})
+            print(away_team + ' XGB_EV: ' + Fore.GREEN + str(ev_away) + Style.RESET_ALL)
+        else:
+            xgb_ev_dict[away_team] = ev_away
+            xgb_ev_list.append({'Team': away_team, 'XGB_EV': ev_away})
+            print(away_team + ' XGB_EV: ' + Fore.RED + str(ev_away) + Style.RESET_ALL)
         count += 1
 
-    deinit()
+           
+deinit()
+    
+    
+xgb_ev_df = pd.DataFrame(xgb_ev_list)
+xgb_ev_df = xgb_ev_df.sort_values(by='XGB_EV', ascending=False).reset_index(drop=True)
+
+return xgb_ev_df
