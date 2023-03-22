@@ -58,7 +58,7 @@ def nn_runner(data, todays_games_uo, frame_ml, games, home_team_odds, away_team_
                       Fore.BLUE + 'OVER ' + Style.RESET_ALL + str(todays_games_uo[count]) + Style.RESET_ALL + Fore.CYAN + f" ({un_confidence}%)" + Style.RESET_ALL)
         count += 1
 
-    print("--------------------Expected Value---------------------")
+    print("-----------------NN Expected Value---------------------")
     count = 0
     for game in games:
         home_team = game[0]
