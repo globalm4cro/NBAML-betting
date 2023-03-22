@@ -10,7 +10,7 @@ def remove_colorama_codes(text):
 #output_txt = !python3 main.py -A -odds=betmgm
 import subprocess
 
-output_txt = subprocess.run(["python3", "main.py", "-A", "-odds=betmgm"], capture_output=True, text=True)
+output_txt = subprocess.run(["python3", "main.py", "-A", "-odds=betmgm"], capture_output=True, text=True).stdout
 
 
 
