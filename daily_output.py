@@ -18,17 +18,17 @@ output_txt = subprocess.run(["python3", "main.py", "-A", "-odds=betmgm"], captur
 output_txt_str = text_utils.SList(output_txt).nlstr
 
 clean_output = remove_colorama_codes(output_txt_str)
-#print(clean_output)
+print(clean_output)
 
 # Define patterns to match the start of each section
 #xgboost_start_pattern = r"---------------XGBoost Model Predictions---------------"
 #nn_start_pattern = r"------------Neural Network Model Predictions-----------"
 nn_start_pattern = r"ms/step"
 nn_end_pattern = r"nnnend-------------------------------------------------"
-xgboost_start_pattern = r"---------------XGBoost Model Predictions---------------"
+xgboost_start_pattern = r"XGBoost Model Predictions---------------"
 xgboost_end_pattern = r"xgbend-------------------------------------------------"
 odds_start_pattern = r" odds data------------------"
-xgb_OUstart_pattern = r"---------------XGBoost Model Predictions---------------"
+xgb_OUstart_pattern = r"XGBoost Model Predictions---------------"
 nn_OUstart_pattern = r"ms/step"
 
 # Find the start of each section
