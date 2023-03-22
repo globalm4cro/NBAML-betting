@@ -74,7 +74,7 @@ def xgb_runner(data, todays_games_uo, frame_ml, games, home_team_odds, away_team
     
     #NEW CODE ADDS Pandas Dataframe for XGB to call and sort later -JS
     xgb_ev_list =[]
-        count = 0
+    count = 0
     for game in games:
         home_team = game[0]
         away_team = game[1]
